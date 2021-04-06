@@ -12,6 +12,8 @@ To create the virtual environment Using `venv` with Python 3.6 or higher you can
 
 ```
 $ python3 -m venv ENV_DIR
+
+$ source  ENV_DIR/bin/activate
 ```
 
 Activate your environment according to instructions above.
