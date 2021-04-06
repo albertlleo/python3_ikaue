@@ -22,6 +22,8 @@ Upgrade to the most recent version of pip by calling:
 
 ```
 $ pip install --upgrade pip
+
+$ pip install wheel
 ```
 
 Another alternative is using `virtualenv` as described

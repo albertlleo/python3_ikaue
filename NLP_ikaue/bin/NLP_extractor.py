@@ -19,6 +19,7 @@ from python3_ikaue.NLP_ikaue.core.config_helper import set_log_file
 
 
 def get_urls(keyword, gcnl_max_results):
+
     """
     This function returns an array of urls that appears on the search applying the keyword
     :param keyword: string concatenated with "+" to perform a bs4 query search
