@@ -2,7 +2,7 @@ from setuptools import find_packages
 import NLP_ikaue
 
 def define_args():
-    install_requirements = ['beautifulsoup4>=4.9.3', 'google-cloud-core>=1.6.0','bs4>=0.0.1','gapic-google-cloud-language-v1>=0.15.3','google-api-core>=1.26.2','google-api-python-client>=2.0.2','urllib3>=1.26.4','google-cloud-language>=2.0.0']
+    install_requirements = ['beautifulsoup4>=4.9.3','wheel=0.36.2','googlesearch-python>=2020.0.2', 'google-cloud-core>=1.6.0','bs4>=0.0.1','gapic-google-cloud-language-v1>=0.15.3','google-api-core>=1.26.2','google-api-python-client>=2.0.2','urllib3>=1.26.4','google-cloud-language>=2.0.0']
 
     test_requirements = ['pytest>=4.3,<4.4', 'pytest-cov>=2.7,<2.8']
     args = {
