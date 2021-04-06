@@ -1,70 +1,70 @@
-# -*- coding: utf-8 -*-
-# base-aa-pgsql.py
-# base configuration
 # (C) 2018 IKAUE, Marketing de Optimizacion
 # created by Albert Moral Lleó <albert@ikaue.com>
 
-# PRE-REQUISITES
-# Python 3.x (tested with version 2.7.13 on Debian 9 x86_64)
-# lxml (pip install lxml)
-# requests (pip install requests)
+"""
+This module generates a csv with the data extracted from 10 urls html text using Google NLP_ikaue tool.
+"""
 
-from google.cloud import language_v1
 import os
-from urllib.request import urlopen, Request
-import requests
+import sys
+import logging
+
 from bs4 import BeautifulSoup
+from google.cloud import language_v1
 from googlesearch import search
+from urllib.request import urlopen, Request
+
+from python3_ikaue.NLP_ikaue.core.config_helper import set_log_file
+
 
 
 def get_urls(keyword, gcnl_max_results):
     """
-
+    This function returns an array of urls that appears on the search applying the keyword
     :param keyword: string concatenated with "+" to perform a bs4 query search
     :param gcnl_max_results: max url to get for each query
-    :return:
+    :return: urls in array format
     """
 
     # to search
     query = keyword
 
     links = []
-    for j in search(query, num=gcnl_max_results, stop=gcnl_max_results, pause=2):
-        links.append(j)
-    """ 
-    urls = []
-  
-    page = requests.get(
-      "https://www.google.es/search?q=%s&oq=%s&aqs=chrome.0.69i59j69i60j0.2775j0j9&sourceid=chrome&ie=UTF-8&num=%s" % (
-        keyword, keyword, gcnl_max_results))
-    soup = BeautifulSoup(page.content, "html.parser")
-    links = soup.findAll("a")
-    for link in links:
-      link_href = link.get('href')
-      if "url?q=" in link_href and not "webcache" in link_href:
-        urls.append(link.get('href').split("?q=")[1].split("&sa=U")[0])
-  
-    return urls[:5]
-    """
+    try:
+        for j in search(query, num=gcnl_max_results, stop=gcnl_max_results, pause=2):
+            links.append(j)
+    except Exception as message:
+        logging.error(message)
+        sys.exit(1)
+
     return links
 
 
 def get_html_text(urls):
-    # configuration: service account JSON key file
-    json_key_file = "google-credentials-analytics.json"
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = json_key_file
+    """
+    This function retrieve only the text from the html given by every url using Beautiful Soup 4.
+    :param urls: urls obtained in array format
+    :return: A dctionary where the key is the url and the value is all the text for this url.
+    """
+
 
     # build the Google Cloud Natural Language (GCNL) service object
     results_text = {}
     for url in urls:
         # print the keyword to analyze
+        try:
+            req = Request(url, headers={
+                'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"})
+            webpage = urlopen(req).read()
 
-        req = Request(url, headers={
-            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"})
+            soup = BeautifulSoup(webpage, features="html.parser")
 
-        webpage = urlopen(req).read()
+        except Exception as message:
+            logging.error(f"Could not retrieve html: {message}")
+            sys.exit(1)
 
-        soup = BeautifulSoup(webpage, features="html.parser")
+
+
 
         # kill all script and style elements
         for script in soup(["script", "style"]):
@@ -72,23 +72,28 @@ def get_html_text(urls):
 
         # get text
         text = soup.get_text()
+
         # break into lines and remove leading and trailing space on each
         lines = (line.strip() for line in text.splitlines())
+
         # break multi-headlines into a line each
         chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+
         # drop blank lines
         results_text[url] = '\n'.join(chunk for chunk in chunks if chunk)
 
     return results_text
 
 
-def sample_analyze_entities(text_content, json_key_file_path="google-credentials-analytics.json"):
-    """
-    Analyzing Entities in a String
+def sample_analyze_entities(text_content, json_key_file_path="../core/google-credentials-analytics.json"):
 
-    Args:
-      text_content The text content to analyze
     """
+    This function analyzes Entities in a String
+    :param text_content: The text content to analyze
+    :param json_key_file_path: Path where credentials are located.
+    :return:
+    """
+
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = json_key_file_path
     client = language_v1.LanguageServiceClient()
 
@@ -106,12 +111,26 @@ def sample_analyze_entities(text_content, json_key_file_path="google-credentials
     # Available values: NONE, UTF8, UTF16, UTF32
     encoding_type = language_v1.EncodingType.UTF8
 
-    response = client.analyze_entities(request={'document': document, 'encoding_type': encoding_type})
+    try:
+        response = client.analyze_entities(request={'document': document, 'encoding_type': encoding_type})
+    except Exception as message:
+        logging.error(f"Could not retrieve response from Google NLP Client: {message}")
+        sys.exit(1)
 
     return response
 
 
-def retrieve_text_by_url(gcnl_keywords):
+def retrieve_text_by_url(gcnl_keywords,gcnl_max_results):
+
+    """
+    This function is in charge of retrieve the urls given the words and substracting the text of its html.
+    :param gcnl_keywords: Array de palabras/términos que deseamos realizar el análisis
+    :param gcnl_max_results: Maximium of urls per search
+    :return: A dictionary where the the keys are the queries performed and the values are a dictionary where its key
+             are each url searched and the value is the text of its url.
+    """
+
+    text_by_url={}
     for keyword in gcnl_keywords:
 
         print(u">> keyword: '%s'" % keyword)
@@ -120,7 +139,6 @@ def retrieve_text_by_url(gcnl_keywords):
         # Retrieve 5 top urls
         urls = get_urls(keyword, gcnl_max_results)
 
-        # OBTENER TEXT LIMITE 5000 paraules.
 
         text_by_url[keyword] = get_html_text(
             urls)  # dict con keys de cada keyword, y dentro de cada key otro dict por cada url y su texto
@@ -128,18 +146,20 @@ def retrieve_text_by_url(gcnl_keywords):
     return text_by_url
 
 
-def obtain_nlp_csv():
+def obtain_nlp_csv(text_by_url):
+    """
+    This function retrieve the NLP analysis and creates a csv with this information.
+    :param text_by_url: A dictionary where the the keys are the queries performed and the values are a dictionary where
+                        its key are each url searched and the value is the text of its url.
+    :return: A csv.
+    """
+
     csv_final = []
     for key in text_by_url.keys():
         for url in text_by_url[key].keys():
 
-            """# Obtain 1000 words aprox (obtaining 7000 characters with a medium of 7 chars by expresion)
-            words = [t for t in text_by_url[key][url].split()]
-            words_limited = 5000 if len(words) > gcnl_max_words else 0 #If there are more than 1000 words apply an average of 4000 characters per 1000 words (average of 4 letters per word)
-      
-            #sample_analyze_entities(words_limited)"""
-
-            response = sample_analyze_entities(text_by_url[key][url][:1000])  # Only pass 1000 chars to google
+            # Only pass 1000 chars to NLP Google function
+            response = sample_analyze_entities(text_by_url[key][url][:1000])
 
             # Loop through entitites returned from the API
             for entity in response.entities:
@@ -158,14 +178,15 @@ def obtain_nlp_csv():
                 # Some entity types may have additional metadata, e.g. ADDRESS entities
                 # may have metadata for the address street_name, postal_code, et al.
                 for metadata_name, metadata_value in entity.metadata.items():
-                    print(u"{}: {}".format(metadata_name, metadata_value))
+                    #print(u"{}: {}".format(metadata_name, metadata_value))
                     csv.append(metadata_name)
                     csv.append(metadata_value)
 
                 # Loop over the mentions of this entity in the input document.
                 # The API currently supports proper noun mentions.
                 for mention in entity.mentions:
-                    print(u"Mention text: {}".format(mention.text.content))
+                    pass
+                    #print(u"Mention text: {}".format(mention.text.content))
 
                     # Get the mention type, e.g. PROPER for proper noun
                     print(
@@ -182,21 +203,42 @@ def obtain_nlp_csv():
 
     return csv_final
 
+def set_logs(case_directory):
+    """
+    This function set the logs for this script file.
+    :param logs: log file name
+    :return:
+    """
 
-if __name__ == "__main__":
-    # Initialize variables
+    if os.path.isdir(case_directory):
+        log_file_name = 'log.txt'
+        logger = set_log_file(case_directory, log_file_name)
+        logger.addHandler(logging.StreamHandler())
+    else:
+        message = 'Input case directory not existing - Aborting'
+        logging.error(message)
+        sys.exit(1)
 
+def main():
+    # Initialize logs
+    set_logs("logs")
+
+    # Set variables up
     cnl_filename = "out/venca-keywords.xlsx"
     gcnl_keywords = ["camiseta mujer", "tops mujer"]
     gcnl_max_results = 5
     gcnl_max_words = 100
     # gcnl_min_salience = 0.000015
 
-    text_by_url = {}
 
-    text_by_url = retrieve_text_by_url(gcnl_keywords)
+    # Start by obtaining
+    text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
 
-    # csv = obtain_nlp_csv(text_by_url)
-    # print(csv[:5])
+    csv = obtain_nlp_csv(text_by_url)
+    print(csv[5:])
+
+
+if __name__ == "__main__":
+    main()
 
 
