@@ -9,6 +9,7 @@ import os
 import sys
 import logging
 
+import pandas as pd
 from bs4 import BeautifulSoup
 from google.cloud import language_v1
 from googlesearch import search
@@ -146,9 +147,10 @@ def retrieve_text_by_url(gcnl_keywords,gcnl_max_results):
         # Retrieve 5 top urls
         urls = get_urls(keyword, gcnl_max_results)
 
-
+        # Dict where keys are each keyword, and inside resides another dict with key as url and value the html text of \
+        # its url.
         text_by_url[keyword] = get_html_text(
-            urls)  # dict con keys de cada keyword, y dentro de cada key otro dict por cada url y su texto
+            urls)
 
     return text_by_url
 
@@ -161,7 +163,7 @@ def obtain_nlp_csv(text_by_url):
     :return: A csv.
     """
 
-    csv_final = []
+    csv_final = pd.d
     for key in text_by_url.keys():
         for url in text_by_url[key].keys():
 
@@ -234,7 +236,7 @@ def main():
     cnl_filename = "out/venca-keywords.xlsx"
     gcnl_keywords = ["camiseta mujer", "tops mujer"]
     gcnl_max_results = 5
-    gcnl_max_words = 100
+    # gcnl_max_words = 100
     # gcnl_min_salience = 0.000015
 
 
