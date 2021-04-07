@@ -1,0 +1,202 @@
+Checking google-credentials-analytics.json for explicit credentials as part of auth process...
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+Checking ../core/google-credentials-analytics.json for explicit credentials as part of auth process...
+Making request: POST https://accounts.google.com/o/oauth2/token
+Starting new HTTPS connection (1): accounts.google.com:443
+https://accounts.google.com:443 "POST /o/oauth2/token HTTP/1.1" 200 None
+search() got an unexpected keyword argument 'num'
