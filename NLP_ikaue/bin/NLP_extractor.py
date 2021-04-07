@@ -32,7 +32,7 @@ def get_urls(keyword, gcnl_max_results):
 
     links = []
     try:
-        for j in search(query, num=gcnl_max_results, stop=gcnl_max_results, pause=2):
+        for j in search(query,  num_results=gcnl_max_results):
             links.append(j)
     except Exception as message:
         logging.error(message)
