@@ -14,8 +14,9 @@ from google.cloud import language_v1
 from googlesearch import search
 from urllib.request import urlopen, Request
 
-from python3_ikaue.NLP_ikaue.core.config_helper import set_log_file
-
+#from python3_ikaue.NLP_ikaue.core.config_helper import set_log_file
+sys.path.insert(1, "../core/")
+from config_helper import set_log_file
 
 
 def get_urls(keyword, gcnl_max_results):
@@ -32,8 +33,12 @@ def get_urls(keyword, gcnl_max_results):
 
     links = []
     try:
-        for j in search(query, num=gcnl_max_results, stop=gcnl_max_results, pause=2):
-            links.append(j)
+        for j in search(query,  num_results=gcnl_max_results):
+            if "elcorteingles" in j.split("."):
+                gcnl_max_results-=1
+            else:
+                links.append(j)
+
     except Exception as message:
         logging.error(message)
         sys.exit(1)
@@ -56,6 +61,7 @@ def get_html_text(urls):
         try:
             req = Request(url, headers={
                 'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"})
+
             webpage = urlopen(req).read()
 
             soup = BeautifulSoup(webpage, features="html.parser")
@@ -69,7 +75,7 @@ def get_html_text(urls):
 
         # kill all script and style elements
         for script in soup(["script", "style"]):
-            script.extract()  # rip it out
+            script.decompose()  # rip it out
 
         # get text
         text = soup.get_text()
@@ -234,6 +240,7 @@ def main():
 
     # Start by obtaining
     text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
+
 
     csv = obtain_nlp_csv(text_by_url)
     print(csv[5:])
