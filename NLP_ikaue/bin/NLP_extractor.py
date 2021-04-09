@@ -259,7 +259,7 @@ def main():
     # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
     gcnl_keywords = [word.strip("\n") for word in text_file]
 
-    print(gcnl_keywords)
+    print(gcnl_keywords.pop())
 
 
 
