@@ -254,9 +254,12 @@ def main():
 
     script, filename = argv
 
-    text_file = open(filename, 'r')
-    gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
 
+    text_file = open(filename, 'r')
+    # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
+    gcnl_keywords = [word.strip("\n") for word in text_file]
+
+    print(gcnl_keywords)
 
     # Start by obtaining
     text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
