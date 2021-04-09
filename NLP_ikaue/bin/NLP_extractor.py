@@ -257,10 +257,9 @@ def main():
 
     text_file = open(filename, 'r')
     # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
-    gcnl_keywords = [word.strip("\n") for word in text_file]
+    gcnl_keywords = [word.strip("\n") for word in text_file if word != ""]
 
-    print(gcnl_keywords.pop())
-
+    print(gcnl_keywords)
 
 
     # Start by obtaining
