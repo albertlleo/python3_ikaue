@@ -185,7 +185,7 @@ def obtain_nlp_csv(text_by_url,cnl_filename,min_salience):
                     pass
                 else:
 
-                    csv_final.loc[len(csv_final)]=[url, entity.name, language_v1.Entity.Type(entity.type_).name, entity.salience]
+                    csv_final.loc[len(csv_final)]=[key,url, entity.name, language_v1.Entity.Type(entity.type_).name, entity.salience]
 
                     #print(u"Representative name for the entity: {}".format(entity.name))
 
