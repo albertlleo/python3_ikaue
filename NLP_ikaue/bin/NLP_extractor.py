@@ -169,7 +169,7 @@ def obtain_nlp_csv(text_by_url,cnl_filename,min_salience):
     :return: A csv.
     """
 
-    cols=["url","EntityName","Language","Salience"]
+    cols=["keyword","url","EntityName","Language","Salience"]
     csv_final = pd.DataFrame(columns=cols)
 
     for key in text_by_url.keys():
@@ -184,7 +184,7 @@ def obtain_nlp_csv(text_by_url,cnl_filename,min_salience):
                 if entity.salience < min_salience:
                     pass
                 else:
-
+                    #
                     csv_final.loc[len(csv_final)]=[key,url, entity.name, language_v1.Entity.Type(entity.type_).name, entity.salience]
 
                     #print(u"Representative name for the entity: {}".format(entity.name))
