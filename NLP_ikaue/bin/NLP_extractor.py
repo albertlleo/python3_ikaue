@@ -262,6 +262,7 @@ def main():
     print(gcnl_keywords)
 
 
+
     # Start by obtaining
     #text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
 
