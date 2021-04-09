@@ -227,6 +227,22 @@ def obtain_nlp_csv(text_by_url,cnl_filename,min_salience):
 
     return csv_final.to_csv(cnl_filename,encoding='utf-8')
 
+def retrieve_keywords():
+    """
+    This module retrieve keywords from input file passed as arg[1]
+    :return: keywords
+    """
+    script, filename = argv
+
+    text_file = open(filename, 'r')
+    # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
+    gcnl_keywords = [word.strip("\n") for word in text_file if word != ""]
+
+    # Delete last empty element of the array
+    gcnl_keywords.pop()
+
+    return gcnl_keywords
+
 def set_logs(case_directory):
     """
     This function set the logs for this script file.
@@ -249,21 +265,13 @@ def main():
 
     # Set variables up
     cnl_filename = "out/venca-keywords.csv"
-    gcnl_keywords = ["camiseta mujer", "tops mujer"]
     gcnl_max_results = 5
     # gcnl_max_words = 100
     gcnl_min_salience = 0.000015
 
-    script, filename = argv
 
-
-    text_file = open(filename, 'r')
-    # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
-    gcnl_keywords = [word.strip("\n") for word in text_file if word != ""]
-
-    # Delete last empty element of the array
-    gcnl_keywords.pop()
-
+    # Retrieve keywords from input file
+    gcnl_keywords= retrieve_keywords()
 
     # Start by obtaining
     text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
