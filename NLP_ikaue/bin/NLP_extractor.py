@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # (C) 2018 IKAUE, Marketing de Optimizacion
 # created by Albert Moral Lleó <albert@ikaue.com>
 
@@ -132,6 +133,7 @@ def sample_analyze_entities(text_content, json_key_file_path="../core/google-cre
         sys.exit(1)
 
     return response
+
 
 
 def retrieve_text_by_url(gcnl_keywords,gcnl_max_results):
