@@ -33,8 +33,9 @@ def get_urls(keyword, gcnl_max_results):
     :return: urls in array format
     """
 
+
     # to search
-    query = keyword
+    query = keyword.encode('utf-8')
 
     links = []
     try:
