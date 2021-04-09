@@ -259,14 +259,16 @@ def main():
     # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
     gcnl_keywords = [word.strip("\n") for word in text_file if word != ""]
 
-    print(gcnl_keywords)
+    # Delete last empty element of the array
+    gcnl_keywords.pop()
 
 
     # Start by obtaining
-    #text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
+    text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
 
 
-    #obtain_nlp_csv(text_by_url,cnl_filename,gcnl_min_salience)
+    obtain_nlp_csv(text_by_url,cnl_filename,gcnl_min_salience)
+
 
 
 
