@@ -239,7 +239,7 @@ def retrieve_keywords():
     gcnl_keywords = [word.strip("\n") for word in text_file if word != ""]
 
     # Delete last empty element of the array
-    gcnl_keywords.pop()
+    # gcnl_keywords.pop()
 
     return gcnl_keywords
 
