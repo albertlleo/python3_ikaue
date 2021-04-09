@@ -8,8 +8,11 @@ This module generates a csv with the data extracted from 10 urls html text using
 import os
 import sys
 import logging
+from sys import argv
+
 
 import pandas as pd
+from string import punctuation
 from bs4 import BeautifulSoup
 from google.cloud import language_v1
 from googlesearch import search
@@ -185,7 +188,7 @@ def obtain_nlp_csv(text_by_url,cnl_filename,min_salience):
                     csv_final.loc[len(csv_final)]=[url, entity.name, language_v1.Entity.Type(entity.type_).name, entity.salience]
 
                     #print(u"Representative name for the entity: {}".format(entity.name))
-    
+
                     # Get entity type, e.g. PERSON, LOCATION, ADDRESS, NUMBER, et al
                     #print(u"Entity type: {}".format(language_v1.Entity.Type(entity.type_).name))
 
@@ -248,6 +251,11 @@ def main():
     gcnl_max_results = 5
     # gcnl_max_words = 100
     gcnl_min_salience = 0.000015
+
+    script, filename = argv
+
+    text_file = open(filename, 'r')
+    gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
 
 
     # Start by obtaining
