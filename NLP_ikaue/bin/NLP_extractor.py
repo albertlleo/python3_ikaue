@@ -261,11 +261,12 @@ def main():
 
     print(gcnl_keywords)
 
+
     # Start by obtaining
-    text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
+    #text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
 
 
-    obtain_nlp_csv(text_by_url,cnl_filename,gcnl_min_salience)
+    #obtain_nlp_csv(text_by_url,cnl_filename,gcnl_min_salience)
 
 
 
