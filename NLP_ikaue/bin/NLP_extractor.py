@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # (C) 2018 IKAUE, Marketing de Optimizacion
 # created by Albert Moral Lleó <albert@ikaue.com>
 
@@ -8,7 +9,11 @@ This module generates a csv with the data extracted from 10 urls html text using
 import os
 import sys
 import logging
+from sys import argv
 
+
+import pandas as pd
+from string import punctuation
 from bs4 import BeautifulSoup
 from google.cloud import language_v1
 from googlesearch import search
@@ -38,6 +43,7 @@ def get_urls(keyword, gcnl_max_results):
                 gcnl_max_results-=1
             else:
                 links.append(j)
+        logging.info('Links appended')
 
     except Exception as message:
         logging.error(message)
@@ -66,6 +72,7 @@ def get_html_text(urls):
 
             soup = BeautifulSoup(webpage, features="html.parser")
 
+
         except Exception as message:
             logging.error(f"Could not retrieve html: {message}")
             sys.exit(1)
@@ -89,6 +96,7 @@ def get_html_text(urls):
         # drop blank lines
         results_text[url] = '\n'.join(chunk for chunk in chunks if chunk)
 
+    logging.info('html text extracted')
     return results_text
 
 
@@ -127,6 +135,7 @@ def sample_analyze_entities(text_content, json_key_file_path="../core/google-cre
     return response
 
 
+
 def retrieve_text_by_url(gcnl_keywords,gcnl_max_results):
 
     """
@@ -146,14 +155,15 @@ def retrieve_text_by_url(gcnl_keywords,gcnl_max_results):
         # Retrieve 5 top urls
         urls = get_urls(keyword, gcnl_max_results)
 
-
+        # Dict where keys are each keyword, and inside resides another dict with key as url and value the html text of \
+        # its url.
         text_by_url[keyword] = get_html_text(
-            urls)  # dict con keys de cada keyword, y dentro de cada key otro dict por cada url y su texto
+            urls)
 
     return text_by_url
 
 
-def obtain_nlp_csv(text_by_url):
+def obtain_nlp_csv(text_by_url,cnl_filename,min_salience):
     """
     This function retrieve the NLP analysis and creates a csv with this information.
     :param text_by_url: A dictionary where the the keys are the queries performed and the values are a dictionary where
@@ -161,54 +171,77 @@ def obtain_nlp_csv(text_by_url):
     :return: A csv.
     """
 
-    csv_final = []
+    cols=["keyword","url","EntityName","Language","Salience"]
+    csv_final = pd.DataFrame(columns=cols)
+
     for key in text_by_url.keys():
         for url in text_by_url[key].keys():
 
             # Only pass 1000 chars to NLP Google function
+
             response = sample_analyze_entities(text_by_url[key][url][:1000])
 
             # Loop through entitites returned from the API
             for entity in response.entities:
-                csv = [url, entity.name, language_v1.Entity.Type(entity.type_).name, entity.salience]
-
-                print(u"Representative name for the entity: {}".format(entity.name))
-
-                # Get entity type, e.g. PERSON, LOCATION, ADDRESS, NUMBER, et al
-                print(u"Entity type: {}".format(language_v1.Entity.Type(entity.type_).name))
-
-                # Get the salience score associated with the entity in the [0, 1.0] range
-                print(u"Salience score: {}".format(entity.salience))
-
-                # Loop over the metadata associated with entity. For many known entities,
-                # the metadata is a Wikipedia URL (wikipedia_url) and Knowledge Graph MID (mid).
-                # Some entity types may have additional metadata, e.g. ADDRESS entities
-                # may have metadata for the address street_name, postal_code, et al.
-                for metadata_name, metadata_value in entity.metadata.items():
-                    #print(u"{}: {}".format(metadata_name, metadata_value))
-                    csv.append(metadata_name)
-                    csv.append(metadata_value)
-
-                # Loop over the mentions of this entity in the input document.
-                # The API currently supports proper noun mentions.
-                for mention in entity.mentions:
+                if entity.salience < min_salience:
                     pass
-                    #print(u"Mention text: {}".format(mention.text.content))
+                else:
+                    #
+                    csv_final.loc[len(csv_final)]=[key,url, entity.name, language_v1.Entity.Type(entity.type_).name, entity.salience]
 
-                    # Get the mention type, e.g. PROPER for proper noun
-                    print(
-                        u"Mention type: {}".format(language_v1.EntityMention.Type(mention.type_).name)
-                    )
-                    # csv.append(mention.text.content)
-                    # csv.append(language_v1.EntityMention.Type(mention.type_).name)
+                    #print(u"Representative name for the entity: {}".format(entity.name))
 
-            # Get the language of the text, which will be the same as
-            # the language specified in the request or, if not specified,
-            # the automatically-detected language.
-            print(u"Language of the text: {}".format(response.language))
-        csv_final = csv_final + csv
+                    # Get entity type, e.g. PERSON, LOCATION, ADDRESS, NUMBER, et al
+                    #print(u"Entity type: {}".format(language_v1.Entity.Type(entity.type_).name))
 
-    return csv_final
+                    # Get the salience score associated with the entity in the [0, 1.0] range
+                    #print(u"Salience score: {}".format(entity.salience))
+
+                    # Loop over the metadata associated with entity. For many known entities,
+                    # the metadata is a Wikipedia URL (wikipedia_url) and Knowledge Graph MID (mid).
+                    # Some entity types may have additional metadata, e.g. ADDRESS entities
+                    # may have metadata for the address street_name, postal_code, et al.
+                    """for metadata_name, metadata_value in entity.metadata.items():
+                        #print(u"{}: {}".format(metadata_name, metadata_value))
+                        csv.append(metadata_name)
+                        csv.append(metadata_value)"""
+
+                    # Loop over the mentions of this entity in the input document.
+                    # The API currently supports proper noun mentions.
+                    """for mention in entity.mentions:
+                        pass
+                        #print(u"Mention text: {}".format(mention.text.content))
+    
+                        # Get the mention type, e.g. PROPER for proper noun
+                        print(
+                            u"Mention type: {}".format(language_v1.EntityMention.Type(mention.type_).name)
+                        )
+                        # csv.append(mention.text.content)
+                        # csv.append(language_v1.EntityMention.Type(mention.type_).name)"""
+
+                # Get the language of the text, which will be the same as
+                # the language specified in the request or, if not specified,
+                # the automatically-detected language.
+                #print(u"Language of the text: {}".format(response.language))
+
+
+    return csv_final.to_csv(cnl_filename,encoding='utf-8')
+
+def retrieve_keywords():
+    """
+    This module retrieve keywords from input file passed as arg[1]
+    :return: keywords
+    """
+    script, filename = argv
+
+    text_file = open(filename, 'r')
+    # gcnl_keywords = [word.strip(punctuation) for line in text_file for word in line.split()]
+    gcnl_keywords = [word.strip("\n") for word in text_file if word != ""]
+
+    # Delete last empty element of the array
+    # gcnl_keywords.pop()
+
+    return gcnl_keywords
 
 def set_logs(case_directory):
     """
@@ -228,22 +261,25 @@ def set_logs(case_directory):
 
 def main():
     # Initialize logs
-    set_logs("logs")
+    set_logs("../core/logs")
 
     # Set variables up
-    cnl_filename = "out/venca-keywords.xlsx"
-    gcnl_keywords = ["camiseta mujer", "tops mujer"]
+    cnl_filename = "../out/venca-keywords.csv"
     gcnl_max_results = 5
-    gcnl_max_words = 100
-    # gcnl_min_salience = 0.000015
+    # gcnl_max_words = 100
+    gcnl_min_salience = 0.000015
 
+
+    # Retrieve keywords from input file
+    gcnl_keywords= retrieve_keywords()
 
     # Start by obtaining
     text_by_url = retrieve_text_by_url(gcnl_keywords, gcnl_max_results)
 
 
-    csv = obtain_nlp_csv(text_by_url)
-    print(csv[5:])
+    obtain_nlp_csv(text_by_url,cnl_filename,gcnl_min_salience)
+
+
 
 
 if __name__ == "__main__":

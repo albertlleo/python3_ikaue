@@ -1,4 +1,4 @@
-# python3 ikaue project
+# python3 ikaue NLP project
 
 Here will be a sample of how a complete python3 project must be done.
 
@@ -53,4 +53,13 @@ pip install .[testing]
 
 
 ## Running
+```
+$ cd /NLP_ikaue/bin
+$ python3 NLP_extractor.py word_list.txt
+```
+## Running Tests
+```
+$ cd /NLP_ikaue/tests
+$ pytest
+```
 ...
