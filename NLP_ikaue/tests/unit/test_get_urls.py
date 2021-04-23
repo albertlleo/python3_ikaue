@@ -26,5 +26,5 @@ from NLP_extractor import get_urls
 
 def test_get_subject(input_subject1,input_subject2, expected):
     actual = get_urls(input_subject1,input_subject2)
-    assert type(actual) == bytearray #modify as desired. Dummy example
+    assert type(actual) == list #modify as desired. Dummy example
 

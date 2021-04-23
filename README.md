@@ -57,4 +57,10 @@ pip install .[testing]
 $ cd /NLP_ikaue/bin
 $ python3 NLP_extractor.py word_list.txt
 ```
+## Running Tests
+```
+$ cd /NLP_ikaue/tests
+$ pytest
+```
+...
 ...
