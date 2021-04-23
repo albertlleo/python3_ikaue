@@ -261,10 +261,10 @@ def set_logs(case_directory):
 
 def main():
     # Initialize logs
-    set_logs("logs")
+    set_logs("../core/logs")
 
     # Set variables up
-    cnl_filename = "out/venca-keywords.csv"
+    cnl_filename = "../out/venca-keywords.csv"
     gcnl_max_results = 5
     # gcnl_max_words = 100
     gcnl_min_salience = 0.000015

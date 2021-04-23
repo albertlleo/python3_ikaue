@@ -55,6 +55,6 @@ pip install .[testing]
 ## Running
 ```
 $ cd /NLP_ikaue/bin
-$ python3 NLP_extractor.py
+$ python3 NLP_extractor.py word_list.txt
 ```
 ...
