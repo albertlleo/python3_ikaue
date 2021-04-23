@@ -2,7 +2,7 @@ name: Project Tests
 on:
   push:
     branches:
-      - master
+      - develop
   pull_request:
     branches:
       - master
@@ -21,4 +21,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install .
       - name: Test with pytest
-        run: pytest -vv
+        run: pytest
