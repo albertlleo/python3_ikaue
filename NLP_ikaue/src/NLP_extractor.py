@@ -11,7 +11,6 @@ import sys
 import logging
 from sys import argv
 
-
 import pandas as pd
 from string import punctuation
 from bs4 import BeautifulSoup
