@@ -1,8 +1,9 @@
 import pytest
 import sys
 
-sys.path.insert(1, "NLP_ikaue/src/")
-from NLP_extractor import get_urls
+
+from python3_ikaue.NLP_ikaue.src.NLP_extractor import get_urls
+
 
 
 @pytest.mark.parametrize(
