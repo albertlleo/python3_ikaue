@@ -19,8 +19,8 @@ from google.cloud import language_v1
 from googlesearch import search
 from urllib.request import urlopen, Request
 
-#from python3_ikaue.NLP_ikaue.core.config_helper import set_log_file
-sys.path.insert(1, "NLP_ikaue/core/")
+#from python3_ikaue.NLP_ikaue.lib.config_helper import set_log_file
+sys.path.insert(1, "NLP_ikaue/lib/")
 from config_helper import set_log_file
 
 
@@ -100,7 +100,7 @@ def get_html_text(urls):
     return results_text
 
 
-def sample_analyze_entities(text_content, json_key_file_path="../core/google-credentials-analytics.json"):
+def sample_analyze_entities(text_content, json_key_file_path="../lib/google-credentials-analytics.json"):
 
     """
     This function analyzes Entities in a String
@@ -261,7 +261,7 @@ def set_logs(case_directory):
 
 def main():
     # Initialize logs
-    set_logs("../core/logs")
+    set_logs("../lib/logs")
 
     # Set variables up
     cnl_filename = "../out/venca-keywords.csv"

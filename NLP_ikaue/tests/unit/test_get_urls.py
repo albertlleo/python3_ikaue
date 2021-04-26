@@ -1,7 +1,7 @@
 import pytest
 import sys
 
-sys.path.insert(1, "NLP_ikaue/bin/")
+sys.path.insert(1, "NLP_ikaue/src/")
 from NLP_extractor import get_urls
 
 
