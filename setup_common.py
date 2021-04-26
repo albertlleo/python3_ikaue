@@ -3,7 +3,7 @@ import NLP_ikaue
 
 def define_args():
     install_requirements = ['beautifulsoup4>=4.9.1','wheel>=0.36.2','googlesearch-python>=2020.0.2',
-                            'google-cloud-lib>=1.6.0','bs4>=0.0.1','gapic-google-cloud-language-v1>=0.15.3',
+                            'bs4>=0.0.1','gapic-google-cloud-language-v1>=0.15.3',
                             'google-api-lib>=1.26.2','google-api-python-client>=2.0.2','urllib3>=1.25.9',
                             'google-cloud-language>=2.0.0','pandas>=1.2.4','pytest>=6.2.3']
 
