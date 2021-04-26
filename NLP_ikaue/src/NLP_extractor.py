@@ -19,9 +19,9 @@ from google.cloud import language_v1
 from googlesearch import search
 from urllib.request import urlopen, Request
 
-#from python3_ikaue.NLP_ikaue.lib.config_helper import set_log_file
-sys.path.insert(1, "NLP_ikaue/lib/")
-from config_helper import set_log_file
+from python3_ikaue.NLP_ikaue.lib.config_helper import set_log_file
+#sys.path.insert(1, "NLP_ikaue/lib/")
+#from config_helper import set_log_file
 
 
 def get_urls(keyword, gcnl_max_results):
