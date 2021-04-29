@@ -19,7 +19,7 @@ from googlesearch import search
 from urllib.request import urlopen, Request
 
 #from python3_ikaue.NLP_ikaue.lib.config_helper import set_log_file
-sys.path.insert(1, "NLP_ikaue/lib/")
+
 
 
 
