@@ -20,8 +20,14 @@ from urllib.request import urlopen, Request
 
 #from python3_ikaue.NLP_ikaue.lib.config_helper import set_log_file
 sys.path.insert(1, "NLP_ikaue/lib/")
-from config_helper import set_log_file
 
+
+
+import  os
+myPath = os.path.dirname(os.path.abspath(__file__))
+
+sys.path.insert(0, myPath + '/../lib')
+from config_helper import set_log_file
 
 def get_urls(keyword, gcnl_max_results):
 

@@ -1,10 +1,14 @@
 import pytest
 import sys
 
-sys.path.insert(1, "NLP_ikaue/src/")
+"""sys.path.insert(1, "../../src")
+from NLP_extractor import get_urls"""
+
+import  os
+myPath = os.path.dirname(os.path.abspath(__file__))
+
+sys.path.insert(0, myPath + '/../../src')
 from NLP_extractor import get_urls
-
-
 
 
 @pytest.mark.parametrize(
