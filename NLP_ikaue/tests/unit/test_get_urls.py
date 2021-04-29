@@ -11,6 +11,7 @@ sys.path.insert(0, myPath + '/../../src')
 from NLP_extractor import get_urls
 
 
+
 @pytest.mark.parametrize(
     ["input_subject1","input_subject2", "expected"],
     [
